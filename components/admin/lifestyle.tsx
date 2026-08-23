@@ -229,7 +229,7 @@ export default function AdminLifestyle() {
     <div className="space-y-6">
       <div className="md:flex block justify-between items-center">
         <div className="pb-2 md:pb-0">
-          <h1 className="text-3xl font-serif font-bold">Lifestyle Articles</h1>
+          <h1 className="text-xl md:text-3xl font-bold">Lifestyle Articles</h1>
         </div>
         <button
           onClick={() => (showForm ? resetForm() : setShowForm(true))}

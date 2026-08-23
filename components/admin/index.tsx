@@ -169,7 +169,7 @@ export default function AdminDashboard() {
   if (!admin) return null;
 
   return (
-    <div className="space-y-8 max-w-7xl mx-auto px-2 sm:px-2 py-6">
+    <div className="space-y-8 max-w-7xl mx-auto md:px-2 px-1 py-6">
       {/* Header Section */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b pb-6 border-gray-100">
         <div>
@@ -215,7 +215,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* Monthly Chart Card */}
-      <div className="bg-white border border-gray-100 rounded-xl shadow-sm p-6 space-y-6">
+      <div className="hidden md:block bg-white border border-gray-100 rounded-xl shadow-sm p-6 space-y-6">
         <div className="flex items-center justify-between border-b pb-4 border-gray-100">
           <div className="flex items-center gap-2">
             <TrendingUp className="w-4 h-4 text-amber-600" />

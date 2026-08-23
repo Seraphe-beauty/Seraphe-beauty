@@ -178,7 +178,7 @@ export default function AdminBeautyTips() {
     <div className="space-y-6">
       <div className="md:flex block justify-between items-center">
         <div className="pb-2 md:pb-0">
-          <h1 className="text-3xl font-serif font-bold">
+          <h1 className="text-xl md:text-3xl font-bold">
             Beauty Tips Articles
           </h1>
         </div>

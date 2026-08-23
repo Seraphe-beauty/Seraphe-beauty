@@ -67,7 +67,7 @@ export default function AdminSubscribers() {
     <div className="space-y-6">
       <div className="md:flex block justify-between items-center">
         <div>
-          <h1 className="text-3xl font-serif font-bold">Subscribers</h1>
+          <h1 className="text-xl md:text-3xl font-bold pb-2">Subscribers</h1>
         </div>
       </div>
 
@@ -82,37 +82,43 @@ export default function AdminSubscribers() {
             No subscribers yet.
           </div>
         ) : (
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="bg-gray-50 border-b text-xs text-gray-400 uppercase font-bold">
-                <th className="p-4">Name</th>
-                <th className="p-4">Email</th>
-                <th className="p-4 text-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              {subscribers.map((cat) => (
-                <tr
-                  key={cat._id}
-                  className="hover:bg-gray-50 transition-colors"
-                >
-                  <td className="p-4 font-medium text-gray-800">{cat.name}</td>
-                  <td className="p-4 font-medium text-gray-800">{cat.email}</td>
-                  <td className="p-4 text-right space-x-2">
-                    <button
-                      onClick={() => {
-                        setSelectedSubscriberId(cat._id);
-                        setDeleteModalOpen(true);
-                      }}
-                      className="text-xs font-semibold px-2.5 py-1 text-red-600 bg-red-50 rounded hover:bg-red-100 transition"
-                    >
-                      Delete
-                    </button>
-                  </td>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-gray-50 border-b text-xs text-gray-400 uppercase font-bold">
+                  <th className="p-4">Name</th>
+                  <th className="p-4">Email</th>
+                  <th className="p-4 text-right">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y">
+                {subscribers.map((cat) => (
+                  <tr
+                    key={cat._id}
+                    className="hover:bg-gray-50 transition-colors"
+                  >
+                    <td className="p-4 font-medium text-gray-800">
+                      {cat.name}
+                    </td>
+                    <td className="p-4 font-medium text-gray-800">
+                      {cat.email}
+                    </td>
+                    <td className="p-4 text-right space-x-2">
+                      <button
+                        onClick={() => {
+                          setSelectedSubscriberId(cat._id);
+                          setDeleteModalOpen(true);
+                        }}
+                        className="text-xs font-semibold px-2.5 py-1 text-red-600 bg-red-50 rounded hover:bg-red-100 transition"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
       <DeleteModal

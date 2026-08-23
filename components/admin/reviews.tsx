@@ -43,7 +43,7 @@ export default function AdminReviews() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-serif font-bold">Product Reviews Log</h1>
+        <h1 className="text-xl md:text-3xl pb-2 font-bold">Reviews</h1>
       </div>
 
       <div className="bg-white  w-full border rounded-lg overflow-hidden text-sm shadow-sm">
@@ -56,49 +56,51 @@ export default function AdminReviews() {
             No reviews yet.
           </div>
         ) : (
-          <table className=" w-full text-left border-collapse">
-            <thead>
-              <tr className="bg-gray-50 border-b text-xs text-gray-400 uppercase font-bold">
-                <th className="p-4">Name</th>
-                <th className="p-4 text-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              {reviews.map((review) => (
-                <tr
-                  key={review._id}
-                  className="hover:bg-gray-50 transition-colors"
-                >
-                  <td className="p-4 font-medium text-gray-800">
-                    {review.product.name}
-                  </td>
-                  <td className="p-4 font-medium text-gray-800">
-                    {review.name}
-                  </td>
-                  <td className="p-4">
-                    <div className="flex items-center gap-1">
-                      {Array.from({ length: 5 }).map((_, index) => (
-                        <Star
-                          key={index}
-                          className={`h-4 w-4 ${
-                            index < review.rating
-                              ? "fill-yellow-400 text-yellow-400"
-                              : "text-gray-300"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </td>
-                  <td className="p-4 font-medium text-gray-800">
-                    {review.email}
-                  </td>
-                  <td className="p-4 font-medium text-gray-800">
-                    {review.comment}
-                  </td>
+          <div className="overflow-x-auto">
+            <table className=" w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-gray-50 border-b text-xs text-gray-400 uppercase font-bold">
+                  <th className="p-4">Name</th>
+                  <th className="p-4 text-right">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y">
+                {reviews.map((review) => (
+                  <tr
+                    key={review._id}
+                    className="hover:bg-gray-50 transition-colors"
+                  >
+                    <td className="p-4 font-medium text-gray-800">
+                      {review.product.name}
+                    </td>
+                    <td className="p-4 font-medium text-gray-800">
+                      {review.name}
+                    </td>
+                    <td className="p-4">
+                      <div className="flex items-center gap-1">
+                        {Array.from({ length: 5 }).map((_, index) => (
+                          <Star
+                            key={index}
+                            className={`h-4 w-4 ${
+                              index < review.rating
+                                ? "fill-yellow-400 text-yellow-400"
+                                : "text-gray-300"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </td>
+                    <td className="p-4 font-medium text-gray-800">
+                      {review.email}
+                    </td>
+                    <td className="p-4 font-medium text-gray-800">
+                      {review.comment}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>

@@ -105,7 +105,7 @@ export default function AdminLayout({
 
       <main className="flex-1 overflow-y-auto max-h-screen">
         <AdminNav />
-        <div className="p-3 md:p-12 ">{children}</div>
+        <div className="p-1 md:p-12 ">{children}</div>
 
         <Toaster richColors position="top-right" />
       </main>

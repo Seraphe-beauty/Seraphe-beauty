@@ -184,7 +184,7 @@ export default function AdminTrends() {
     <div className="space-y-6">
       <div className="md:flex block justify-between items-center">
         <div className="pb2 md:pb-0">
-          <h1 className="text-3xl font-serif font-bold">Trends Management</h1>
+          <h1 className="md:text-3xl text-xl font-bold">Trends Management</h1>
         </div>
         <button
           onClick={() => (showForm ? resetForm() : setShowForm(true))}
