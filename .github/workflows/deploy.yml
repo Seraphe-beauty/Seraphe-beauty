@@ -23,7 +23,7 @@ jobs:
           debug: true
           script: |
             # 1. Navigate into your exact repository directory on the droplet
-            cd /home/nnennaudefi/Seraphe-beauty
+            cd /home/Seraphe-beauty/Seraphe-beauty
 
             # 2. Pull down the newest changes from your main branch
             git pull origin main
