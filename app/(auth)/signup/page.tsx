@@ -68,7 +68,7 @@ export default function AdminSignUp({
             <h1 className="text-2xl font-bold ">Seraphé</h1>
           </div>
         </Link>
-        <h2 className="text-xl font-bold text-center text-gray-800 mb-1">
+        <h2 className="text-xl font-bold text-center text-darkText mb-1">
           Create Admin
         </h2>
 
