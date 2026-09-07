@@ -47,23 +47,27 @@ export default function AdminSignIn({ onAuthSuccess }: SignInProps) {
   };
   return (
     <div className="min-h-screen flex items-center justify-center  px-4">
-      <div className="max-w-md w-full p-8 rounded-xl flex flex-col gap-2 justify-center items-center shadow-md border border-gray-100">
-        <Link
-          href="/"
-          className="shrink-0 flex gap-1 pb-2 items-center transition-opacity hover:opacity-90"
-        >
-          <Image
-            src={logo}
-            alt="Seraphé Logo"
-            width={50}
-            height={50}
-            priority
-          />
-          <div className=" mt-3">
-            <h1 className="text-2xl font-bold ">Seraphé</h1>
-          </div>
-        </Link>
-        <p className="text-center text-xl text-gray-800 mb-6">Admin Sign In</p>
+      <div className="max-w-md w-full p-8 rounded-xl  shadow-md border border-gray-100">
+        <div className="flex  justify-center items-center">
+          <Link
+            href="/"
+            className="shrink-0 flex gap-1 pb-2 items-center  transition-opacity hover:opacity-90"
+          >
+            <Image
+              src={logo}
+              alt="Seraphé Logo"
+              width={50}
+              height={50}
+              priority
+            />
+            <div className=" mt-3">
+              <h1 className="text-2xl font-bold ">Seraphé</h1>
+            </div>
+          </Link>
+        </div>
+        <h2 className="text-xl font-bold text-center text-gray-800 mb-6">
+          Admin Sign In
+        </h2>
 
         {error && (
           <div className="bg-red-50 text-red-600 text-sm p-3 rounded-md mb-4 font-medium">
