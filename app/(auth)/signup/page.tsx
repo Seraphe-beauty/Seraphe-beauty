@@ -46,22 +46,24 @@ export default function AdminSignUp({ onAuthSuccess }: SignUpProps) {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-      <div className="max-w-md w-full flex flex-col gap-2 justify-center items-center p-8 rounded-xl shadow-md border border-gray-100">
-        <Link
-          href="/"
-          className="shrink-0 flex gap-1 pb-2 items-center transition-opacity hover:opacity-90"
-        >
-          <Image
-            src={logo}
-            alt="Seraphé Logo"
-            width={50}
-            height={50}
-            priority
-          />
-          <div className=" mt-3">
-            <h1 className="text-2xl font-bold ">Seraphé</h1>
-          </div>
-        </Link>
+      <div className="max-w-md w-full  p-8 rounded-xl shadow-md border border-gray-100">
+        <div className="flex  justify-center items-center">
+          <Link
+            href="/"
+            className="shrink-0 flex gap-1 pb-2 items-center  transition-opacity hover:opacity-90"
+          >
+            <Image
+              src={logo}
+              alt="Seraphé Logo"
+              width={50}
+              height={50}
+              priority
+            />
+            <div className=" mt-3">
+              <h1 className="text-2xl font-bold ">Seraphé</h1>
+            </div>
+          </Link>
+        </div>
         <h2 className="text-xl font-bold text-center text-gray-800 mb-1">
           Create Admin
         </h2>
