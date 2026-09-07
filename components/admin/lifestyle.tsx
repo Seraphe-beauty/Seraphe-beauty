@@ -443,7 +443,7 @@ export default function AdminLifestyle() {
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse min-w-175">
+            <table className="w-full text-xs md:text-sm text-left border-collapse min-w-175">
               <thead>
                 <tr className="bg-gray-50 border-b text-xs text-gray-400 uppercase font-bold">
                   <th className="p-4">Title</th>

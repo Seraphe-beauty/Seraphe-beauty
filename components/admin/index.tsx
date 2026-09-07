@@ -276,7 +276,7 @@ export default function AdminDashboard() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse text-sm">
+          <table className="w-full text-xs md:text-sm text-left border-collapse">
             <thead>
               <tr className="bg-gray-50/50 border-b border-gray-100 text-gray-500 text-xs font-semibold uppercase tracking-wider">
                 <th className="py-3.5 px-6">Title</th>

@@ -183,7 +183,7 @@ export default function AdminTrends() {
   return (
     <div className="space-y-6">
       <div className="md:flex block justify-between items-center">
-        <div className="pb2 md:pb-0">
+        <div className="pb-2 md:pb-0">
           <h1 className="md:text-3xl text-xl font-bold">Trends Management</h1>
         </div>
         <button
@@ -385,7 +385,7 @@ export default function AdminTrends() {
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse min-w-175">
+            <table className="w-full text-xs md:text-sm text-left border-collapse min-w-175">
               <thead>
                 <tr className="bg-gray-50 border-b text-xs text-gray-400 uppercase font-bold">
                   <th className="p-4">Title</th>

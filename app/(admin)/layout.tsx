@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+import logo from "@/components/images/short-logo.png";
 import { usePathname } from "next/navigation";
 import { GrDashboard } from "react-icons/gr";
 import { BiCategory, BiShoppingBag } from "react-icons/bi";
@@ -50,8 +52,25 @@ export default function AdminLayout({
     <div className="flex min-h-screen text-black ">
       {/* Side Navigation Bar */}
       {isAuthenticated && (
-        <aside className="w-16 md:w-64 bg-gray-100 border-rack border-darkText shrink-0">
+        <aside className="w-10 md:w-64 bg-gray-100 border-rack border-darkText shrink-0">
           <nav className="flex flex-col gap-2 p-2 md:p-4">
+            <Link
+              href="/admin"
+              className="shrink-0 flex gap-1 pb-2 items-center transition-opacity hover:opacity-90"
+            >
+              <Image
+                src={logo}
+                alt="Seraphé Logo"
+                width={50}
+                height={50}
+                priority
+                className="md:w-10 w-8 mt-2"
+              />
+              <div className=" mt-3 hidden lg:block">
+                <h1 className="font-bold text-lg">Seraphé</h1>
+                <p className="text-[6px] uppercase">Elevating African Beauty</p>
+              </div>
+            </Link>
             {AdminNavItems.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.link;
@@ -105,7 +124,7 @@ export default function AdminLayout({
 
       <main className="flex-1 overflow-y-auto max-h-screen">
         <AdminNav />
-        <div className="p-1 md:p-12 ">{children}</div>
+        <div className="px-1 py-4 md:p-12 ">{children}</div>
 
         <Toaster richColors position="top-right" />
       </main>

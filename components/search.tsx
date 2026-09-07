@@ -215,7 +215,7 @@ export default function PredictiveSearch({
               ))}
 
               {/* View All Button matching reference image */}
-              <Link
+              {/* <Link
                 href={`/search?q=${encodeURIComponent(query)}${
                   activeTab !== "all" ? `&type=${activeTab}` : ""
                 }`}
@@ -224,7 +224,7 @@ export default function PredictiveSearch({
               >
                 View all results
                 <span className="text-lg">→</span>
-              </Link>
+              </Link> */}
             </div>
           ) : (
             <p className="text-gray-500 text-sm">
