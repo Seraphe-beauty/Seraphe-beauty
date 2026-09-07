@@ -9,13 +9,9 @@ import React, { useState } from "react";
 
 interface SignInProps {
   onAuthSuccess: () => void;
-  onSwitchToSignUp: () => void;
 }
 
-export default function AdminSignIn({
-  onAuthSuccess,
-  onSwitchToSignUp,
-}: SignInProps) {
+export default function AdminSignIn({ onAuthSuccess }: SignInProps) {
   const router = useRouter();
   const { login } = useAuth();
   const [email, setEmail] = useState("");
@@ -51,10 +47,7 @@ export default function AdminSignIn({
   };
   return (
     <div className="min-h-screen flex items-center justify-center  px-4">
-      <div className="max-w-md w-full p-8 rounded-xl shadow-md border border-gray-100">
-        {/* <h2 className="text-2xl font-bold text-center text-gray-800 mb-1">
-          Seraphé Beauty
-        </h2> */}
+      <div className="max-w-md w-full p-8 rounded-xl flex flex-col gap-2 justify-center items-center shadow-md border border-gray-100">
         <Link
           href="/"
           className="shrink-0 flex gap-1 pb-2 items-center transition-opacity hover:opacity-90"
@@ -70,7 +63,7 @@ export default function AdminSignIn({
             <h1 className="text-2xl font-bold ">Seraphé</h1>
           </div>
         </Link>
-        <p className="text-center text-sm text-gray-500 mb-6">Admin Sign In</p>
+        <p className="text-center text-xl text-gray-800 mb-6">Admin Sign In</p>
 
         {error && (
           <div className="bg-red-50 text-red-600 text-sm p-3 rounded-md mb-4 font-medium">
@@ -114,12 +107,11 @@ export default function AdminSignIn({
 
         <p className="mt-6 text-center text-xs text-gray-500">
           Need a profile setup?{" "}
-          <button
-            onClick={onSwitchToSignUp}
-            className="text-primaryBg hover:underline font-semibold"
-          >
-            Register Admin
-          </button>
+          <Link href="/signup">
+            <button className="text-primaryBg hover:underline font-semibold">
+              Register Admin
+            </button>
+          </Link>
         </p>
       </div>
     </div>

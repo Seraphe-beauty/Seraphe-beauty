@@ -10,13 +10,9 @@ import logo from "@/components/images/short-logo.png";
 
 interface SignUpProps {
   onAuthSuccess: () => void;
-  onSwitchToSignIn: () => void;
 }
 
-export default function AdminSignUp({
-  onAuthSuccess,
-  onSwitchToSignIn,
-}: SignUpProps) {
+export default function AdminSignUp({ onAuthSuccess }: SignUpProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,8 +33,6 @@ export default function AdminSignUp({
 
       toast.success("Account created successfully.");
 
-      onSwitchToSignIn();
-
       if (onAuthSuccess) {
         onAuthSuccess();
       }
@@ -52,7 +46,7 @@ export default function AdminSignUp({
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-      <div className="max-w-md w-full p-8 rounded-xl shadow-md border border-gray-100">
+      <div className="max-w-md w-full flex flex-col gap-2 justify-center items-center p-8 rounded-xl shadow-md border border-gray-100">
         <Link
           href="/"
           className="shrink-0 flex gap-1 pb-2 items-center transition-opacity hover:opacity-90"
@@ -64,11 +58,11 @@ export default function AdminSignUp({
             height={50}
             priority
           />
-          <div className=" mt-3 hidden lg:block">
+          <div className=" mt-3">
             <h1 className="text-2xl font-bold ">Seraphé</h1>
           </div>
         </Link>
-        <h2 className="text-xl font-bold text-center text-darkText mb-1">
+        <h2 className="text-xl font-bold text-center text-gray-800 mb-1">
           Create Admin
         </h2>
 
@@ -126,12 +120,11 @@ export default function AdminSignUp({
 
         <p className="mt-6 text-center text-xs text-gray-500">
           Already have access?{" "}
-          <button
-            onClick={onSwitchToSignIn}
-            className="text-primaryText hover:underline font-semibold"
-          >
-            Sign In
-          </button>
+          <Link href="/signin">
+            <button className="text-primaryText hover:underline font-semibold">
+              Sign In
+            </button>
+          </Link>
         </p>
       </div>
     </div>
