@@ -1,6 +1,9 @@
 "use client";
 import { useAuth } from "@/components/context/authContext";
 import { api } from "@/components/lib/api";
+import Link from "next/link";
+import Image from "next/image";
+import logo from "@/components/images/short-logo.png";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -49,9 +52,24 @@ export default function AdminSignIn({
   return (
     <div className="min-h-screen flex items-center justify-center  px-4">
       <div className="max-w-md w-full p-8 rounded-xl shadow-md border border-gray-100">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-1">
+        {/* <h2 className="text-2xl font-bold text-center text-gray-800 mb-1">
           Seraphé Beauty
-        </h2>
+        </h2> */}
+        <Link
+          href="/"
+          className="shrink-0 flex gap-1 pb-2 items-center transition-opacity hover:opacity-90"
+        >
+          <Image
+            src={logo}
+            alt="Seraphé Logo"
+            width={50}
+            height={50}
+            priority
+          />
+          <div className=" mt-3 hidden lg:block">
+            <h1 className="text-2xl font-bold ">Seraphé</h1>
+          </div>
+        </Link>
         <p className="text-center text-sm text-gray-500 mb-6">Admin Sign In</p>
 
         {error && (

@@ -4,6 +4,9 @@ import { api } from "@/components/lib/api";
 
 import React, { useState } from "react";
 import { toast } from "sonner";
+import Link from "next/link";
+import Image from "next/image";
+import logo from "@/components/images/short-logo.png";
 
 interface SignUpProps {
   onAuthSuccess: () => void;
@@ -50,10 +53,24 @@ export default function AdminSignUp({
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="max-w-md w-full p-8 rounded-xl shadow-md border border-gray-100">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-1">
+        <Link
+          href="/"
+          className="shrink-0 flex gap-1 pb-2 items-center transition-opacity hover:opacity-90"
+        >
+          <Image
+            src={logo}
+            alt="Seraphé Logo"
+            width={50}
+            height={50}
+            priority
+          />
+          <div className=" mt-3 hidden lg:block">
+            <h1 className="text-2xl font-bold ">Seraphé</h1>
+          </div>
+        </Link>
+        <h2 className="text-xl font-bold text-center text-gray-800 mb-1">
           Create Admin
         </h2>
-        <p className="text-center text-sm text-gray-500 mb-6">Register</p>
 
         {error && (
           <div className="bg-red-50 text-red-600 text-sm p-3 rounded-md mb-4 font-medium">
@@ -101,7 +118,7 @@ export default function AdminSignUp({
           <button
             type="submit"
             disabled={submitting}
-            className="w-full bg-gray-800 text-white py-2 rounded-md font-semibold hover:bg-gray-900 transition disabled:opacity-50"
+            className="w-full bg-primaryBg text-white py-2 rounded-md font-semibold hover:bg-primaryText transition disabled:opacity-50"
           >
             {submitting ? "Registering..." : "Create Account"}
           </button>

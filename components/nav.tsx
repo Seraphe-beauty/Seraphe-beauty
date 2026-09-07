@@ -24,7 +24,10 @@ export const Nav = () => {
 
   const pathname = usePathname();
   const { products, categories, tips, trends } = useSite();
-  const isAdminRoute = pathname?.startsWith("/admin");
+  const isAdminRoute =
+    pathname?.startsWith("/admin") ||
+    pathname === "/signin" ||
+    pathname === "/signup";
 
   // Prevent scroll when mobile menu is open
   useEffect(() => {
