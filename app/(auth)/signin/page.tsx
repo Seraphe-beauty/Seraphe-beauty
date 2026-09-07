@@ -59,7 +59,7 @@ export default function AdminSignIn({ onAuthSuccess }: SignInProps) {
             height={50}
             priority
           />
-          <div className=" mt-3 hidden lg:block">
+          <div className=" mt-3">
             <h1 className="text-2xl font-bold ">Seraphé</h1>
           </div>
         </Link>
