@@ -58,13 +58,14 @@ export default function AdminSignUp({ onAuthSuccess }: SignUpProps) {
               width={50}
               height={50}
               priority
+              className="w-10"
             />
             <div className=" mt-3">
               <h1 className="text-2xl font-bold ">Seraphé</h1>
             </div>
           </Link>
         </div>
-        <h2 className="text-xl font-bold text-center text-gray-800 mb-1">
+        <h2 className="text-base font-bold text-center text-gray-800 mb-1">
           Create Admin
         </h2>
 
