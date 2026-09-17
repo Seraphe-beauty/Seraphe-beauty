@@ -27,7 +27,10 @@ export const Nav = () => {
   const isAdminRoute =
     pathname?.startsWith("/admin") ||
     pathname === "/signin" ||
-    pathname === "/signup";
+    pathname === "/signup" ||
+    pathname === "/reset-password" ||
+    pathname === "/forgot-password" ||
+    pathname === "/verify-otp";
 
   // Prevent scroll when mobile menu is open
   useEffect(() => {
@@ -182,7 +185,7 @@ export const Nav = () => {
         </div>
       </header>
 
-      {/* Mobile Drawer Overlay */}
+      {/* Mobile Nav */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div

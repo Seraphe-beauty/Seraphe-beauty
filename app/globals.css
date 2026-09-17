@@ -95,3 +95,18 @@ h6 {
 button {
   cursor: pointer;
 }
+
+/* Hide native password toggle in Edge/IE */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
+/* Hide native password toggle in WebKit browsers (Safari/Chrome/Edge) */
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="password"]::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
