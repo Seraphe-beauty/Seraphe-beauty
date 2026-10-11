@@ -120,6 +120,20 @@ export default function AdminSignUp({ onAuthSuccess }: SignUpProps) {
               </div>
             </div>
           </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Code
+            </label>
+            <input
+              type="text"
+              required
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+            />
+          </div>
+
           <button
             type="submit"
             disabled={submitting}
@@ -128,19 +142,6 @@ export default function AdminSignUp({ onAuthSuccess }: SignUpProps) {
             {submitting ? "Registering..." : "Create Account"}
           </button>
         </form>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Code
-          </label>
-          <input
-            type="text"
-            required
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-          />
-        </div>
 
         <p className="mt-6 text-center text-xs text-gray-500">
           Already have an account?{" "}
