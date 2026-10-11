@@ -1,4 +1,10 @@
 import {
+  AdminOtpPayload,
+  AdminOtpResponse,
+  AdminResetPayload,
+  AdminResetResponse,
+  AdminSignUpPayload,
+  AdminSignUpResponse,
   AuthResponse,
   Category,
   CategoryPayload,
@@ -14,6 +20,8 @@ import {
   PublicShopOverview,
   Review,
   ReviewPayload,
+  SignupCodePayload,
+  SignupCodeResponse,
   Subscribers,
   Team,
   TeamGrouped,
@@ -31,14 +39,36 @@ import { apiRequest } from "./apiClient";
 export const api = {
   // AUTH ENDPOINTS
   auth: {
-    adminSignup: (data: Record<string, string>): Promise<AuthResponse> =>
-      apiRequest<AuthResponse>("/auth/admin/signup", {
+    adminSignup: (data: AdminSignUpPayload): Promise<AdminSignUpResponse> =>
+      apiRequest<AdminSignUpResponse>("/auth/admin/signup", {
         method: "POST",
         body: JSON.stringify(data),
       }),
 
     adminSignin: (data: Record<string, string>): Promise<AuthResponse> =>
       apiRequest<AuthResponse>("/auth/admin/signin", {
+        method: "POST",
+        body: JSON.stringify(data),
+      }),
+
+    adminSignUpCode: (data: SignupCodePayload): Promise<SignupCodeResponse> =>
+      apiRequest<SignupCodeResponse>("/auth/admin/signup-codes", {
+        method: "POST",
+        body: JSON.stringify(data),
+      }),
+
+    adminForgotPasswordReset: (
+      data: AdminResetPayload,
+    ): Promise<AdminResetResponse> =>
+      apiRequest<AdminResetResponse>("/auth/admin/forgot-password/reset", {
+        method: "POST",
+        body: JSON.stringify(data),
+      }),
+
+    adminForgotPasswordOtp: (
+      data: AdminOtpPayload,
+    ): Promise<AdminOtpResponse> =>
+      apiRequest<AdminOtpResponse>("/auth/admin/forgot-password/sent-otp", {
         method: "POST",
         body: JSON.stringify(data),
       }),
@@ -116,7 +146,9 @@ export const api = {
       apiRequest<TeamSections[]>(`/team/section`),
 
     // COMMUNITY
-    createSubscriber: (data: CreateSubscriberRequest): Promise<CreateSubscriberRequest> =>
+    createSubscriber: (
+      data: CreateSubscriberRequest,
+    ): Promise<CreateSubscriberRequest> =>
       apiRequest<CreateSubscriberRequest>("/community/signup", {
         method: "POST",
         body: JSON.stringify(data),

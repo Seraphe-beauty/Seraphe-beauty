@@ -300,6 +300,38 @@ export interface AuthResponse {
   };
 }
 
+export interface AdminSignUpPayload {
+  name: string;
+  email: string;
+  password: string;
+  code: string;
+}
+
+export interface AdminSignUpResponse {
+  _id: string;
+  email: string;
+  name: string;
+}
+
+export interface AdminResetPayload {
+  email: string;
+  otp: string;
+  oldPassword: string;
+  newPassword: string;
+}
+
+export interface AdminResetResponse {
+  message: string;
+}
+
+export interface AdminOtpPayload {
+  email: string;
+}
+
+export interface AdminOtpResponse {
+  message: string;
+}
+
 export interface PublicShopOverview {
   featuredProducts: Product[];
   bannerImages: string[];
@@ -316,4 +348,14 @@ export interface ApiResponse<T> {
     total: number;
     totalPages: number;
   };
+}
+
+export interface SignupCodePayload {
+  email: string;
+}
+
+export interface SignupCodeResponse {
+  message: string;
+  email: string;
+  code: string;
 }

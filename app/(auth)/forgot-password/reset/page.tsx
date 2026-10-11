@@ -13,6 +13,7 @@ export default function ResetPasswordPage() {
 
   const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
   const [newPassword, setNewPassword] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
@@ -57,7 +58,12 @@ export default function ResetPasswordPage() {
 
     setSubmitting(true);
     try {
-      //   await api.auth.resetPassword({ email, otp: code, newPassword });
+      await api.auth.adminForgotPasswordReset({
+        otp: code,
+        newPassword,
+        oldPassword,
+        email,
+      });
       toast.success("Password reset successfully. Please sign in.");
       router.push("/signin");
     } catch (err: any) {
@@ -71,7 +77,7 @@ export default function ResetPasswordPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="w-full max-w-md bg-white rounded-xl p-8 shadow-md border border-gray-100">
         <h2 className="text-xl font-bold text-center text-gray-800 mb-1">
-          Set New Password
+          Reset Password
         </h2>
         <p className="text-xs text-center text-gray-500 mb-6">
           Enter the code sent to{" "}

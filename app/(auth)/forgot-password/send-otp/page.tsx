@@ -84,7 +84,7 @@ export default function VerifyOtpPage() {
     }
     setResending(true);
     try {
-      //   await api.auth.resendOtp({ email });
+      await api.auth.adminForgotPasswordOtp({ email });
       toast.success("Verification code resent to your email.");
     } catch (err: any) {
       toast.error(err.message || "Failed to resend verification code.");

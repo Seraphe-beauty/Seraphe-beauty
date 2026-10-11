@@ -21,7 +21,15 @@ export const Footer = () => {
   const [loading, setLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
-  if (pathname?.startsWith("/admin")) return null;
+  const isAdminRoute =
+    pathname?.startsWith("/admin") ||
+    pathname === "/signin" ||
+    pathname === "/signup" ||
+    pathname === "/reset-password" ||
+    pathname === "/forgot-password" ||
+    pathname === "/signup-code";
+
+  if (isAdminRoute) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

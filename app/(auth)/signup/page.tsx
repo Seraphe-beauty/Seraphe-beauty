@@ -2,11 +2,9 @@
 
 import { api } from "@/components/lib/api";
 import React, { useState } from "react";
-import { toast } from "sonner";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/components/images/short-logo.png";
-import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 
 interface SignUpProps {
@@ -14,7 +12,7 @@ interface SignUpProps {
 }
 
 export default function AdminSignUp({ onAuthSuccess }: SignUpProps) {
-  const router = useRouter();
+  const [code, setCode] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,15 +26,11 @@ export default function AdminSignUp({ onAuthSuccess }: SignUpProps) {
     setSubmitting(true);
 
     try {
-      await api.auth.adminSignup({ name, email, password });
-      toast.success("Account created. Please verify your OTP.");
+      await api.auth.adminSignup({ name, email, password, code });
 
       if (onAuthSuccess) {
         onAuthSuccess();
       }
-
-      // Redirect directly to OTP verification page
-      router.push(`/verify-otp?email=${encodeURIComponent(email)}`);
     } catch (err: any) {
       setError(err.message || "Account creation was not successful.");
     } finally {
@@ -135,8 +129,21 @@ export default function AdminSignUp({ onAuthSuccess }: SignUpProps) {
           </button>
         </form>
 
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Code
+          </label>
+          <input
+            type="text"
+            required
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+          />
+        </div>
+
         <p className="mt-6 text-center text-xs text-gray-500">
-          Already have access?{" "}
+          Already have an account?{" "}
           <Link
             href="/signin"
             className="text-primaryText hover:underline font-semibold"
