@@ -27,7 +27,7 @@ export default function SignupCodesPage() {
 
       const admin = JSON.parse(storedAdmin);
 
-      if (admin.role !== "SUPERADMIN") {
+      if (admin.role !== "SUPER_ADMIN") {
         router.replace("/admin");
         return;
       }
@@ -41,8 +41,7 @@ export default function SignupCodesPage() {
   if (!authorized) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        You do not have access to view this page. Kindly reach out to the Super
-        Admin
+        Verifying Access ......
       </div>
     );
   }

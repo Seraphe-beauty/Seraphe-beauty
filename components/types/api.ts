@@ -297,7 +297,7 @@ export interface AuthResponse {
     _id: string;
     email: string;
     name: string;
-    role: "ADMIN" | "SUPERADMIN";
+    role: "ADMIN" | "SUPER_ADMIN";
   };
 }
 
