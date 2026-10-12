@@ -27,10 +27,10 @@ export default function SignupCodesPage() {
 
       const admin = JSON.parse(storedAdmin);
 
-      if (admin.role !== "SUPER_ADMIN") {
-        router.replace("/admin");
-        return;
-      }
+      // if (admin.role !== "SUPER_ADMIN") {
+      //   router.replace("/admin");
+      //   return;
+      // }
 
       console.log("Stored admin:", admin);
       console.log("Stored role:", admin.role);
