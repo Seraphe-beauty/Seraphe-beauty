@@ -32,6 +32,9 @@ export default function SignupCodesPage() {
         return;
       }
 
+      console.log("Stored admin:", admin);
+      console.log("Stored role:", admin.role);
+
       setAuthorized(true);
     } catch {
       router.replace("/signin");
