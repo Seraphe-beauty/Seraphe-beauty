@@ -6,12 +6,14 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "@/components/images/short-logo.png";
 import { Eye, EyeOff } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface SignUpProps {
   onAuthSuccess?: () => void;
 }
 
 export default function AdminSignUp({ onAuthSuccess }: SignUpProps) {
+  const router = useRouter();
   const [code, setCode] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -30,6 +32,8 @@ export default function AdminSignUp({ onAuthSuccess }: SignUpProps) {
 
       if (onAuthSuccess) {
         onAuthSuccess();
+      } else {
+        router.push("/signin");
       }
     } catch (err: any) {
       setError(err.message || "Account creation was not successful.");
