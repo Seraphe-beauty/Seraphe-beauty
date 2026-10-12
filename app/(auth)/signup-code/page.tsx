@@ -58,7 +58,7 @@ export default function SignupCodesPage() {
 
       <form
         onSubmit={handleGenerateCode}
-        className="space-y-5 rounded-xl border p-6 w-full lg:w-[70%]"
+        className="space-y-5 rounded-xl border p-6 w-full"
       >
         <div>
           <label htmlFor="email" className="mb-2 block text-sm font-medium">
