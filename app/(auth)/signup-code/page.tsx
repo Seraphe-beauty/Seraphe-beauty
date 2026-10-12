@@ -1,15 +1,51 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "@/components/lib/api";
 import type { SignupCodeResponse } from "@/components/types/api";
+import { useRouter } from "next/navigation";
 
 export default function SignupCodesPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [signupCode, setSignupCode] = useState<SignupCodeResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
+
+  const [authorized, setAuthorized] = useState(false);
+
+  useEffect(() => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const storedAdmin = localStorage.getItem("admin");
+
+      if (!token || !storedAdmin) {
+        router.replace("/signin");
+        return;
+      }
+
+      const admin = JSON.parse(storedAdmin);
+
+      if (admin.role !== "SUPERADMIN") {
+        router.replace("/admin");
+        return;
+      }
+
+      setAuthorized(true);
+    } catch {
+      router.replace("/signin");
+    }
+  }, [router]);
+
+  if (!authorized) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        You do not have access to view this page. Kindly reach out to the Super
+        Admin
+      </div>
+    );
+  }
 
   const handleGenerateCode = async (
     event: React.FormEvent<HTMLFormElement>,
