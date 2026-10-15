@@ -33,16 +33,20 @@ export default function AdminSignIn({ onAuthSuccess }: SignInProps) {
         password,
       });
 
+      localStorage.setItem("accessToken", response.accessToken);
+      localStorage.setItem("admin", JSON.stringify(response.admin));
+
       login(response);
 
-      if (onAuthSuccess) {
-        onAuthSuccess();
-      }
+      onAuthSuccess?.();
 
       router.replace("/admin");
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (err: any) {
-      setError(err.message || "Invalid email or secret credentials.");
+    } catch (err: unknown) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Invalid email or secret credentials.",
+      );
     } finally {
       setSubmitting(false);
     }

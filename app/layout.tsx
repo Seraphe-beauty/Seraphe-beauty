@@ -11,6 +11,7 @@ import { Footer } from "../components/footer";
 import { AuthProvider } from "@/components/context/authContext";
 import { api } from "@/components/lib/api";
 import { SiteProvider } from "@/components/helper/siteProvider";
+import { Toaster } from "sonner";
 
 const figTree = Figtree({
   variable: "--font-figTree",
@@ -80,7 +81,10 @@ export default async function RootLayout({
           tipsCategories={tipsCategories}
         >
           <Nav />
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            <Toaster position="top-right" richColors />
+            {children}
+          </AuthProvider>
 
           <Footer />
         </SiteProvider>

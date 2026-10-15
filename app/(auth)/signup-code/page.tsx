@@ -16,28 +16,27 @@ export default function SignupCodesPage() {
   const [authorized, setAuthorized] = useState(false);
 
   useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    const storedAdmin = localStorage.getItem("admin");
+
+    if (!token || !storedAdmin) {
+      router.replace("/signin");
+      return;
+    }
+
     try {
-      const token = localStorage.getItem("accessToken");
-      const storedAdmin = localStorage.getItem("admin");
+      const parsed = JSON.parse(storedAdmin);
 
-      if (!token || !storedAdmin) {
-        router.replace("/signin");
-        return;
-      }
-
-      const admin = JSON.parse(storedAdmin);
+      const admin = parsed.admin ?? parsed;
 
       if (admin.role !== "SUPER_ADMIN") {
         router.replace("/admin");
         return;
       }
 
-      console.log("Stored admin:", admin);
-      console.log("Stored role:", admin.role);
-
       setAuthorized(true);
-    } catch {
-      // router.replace("/signin");
+    } catch (error) {
+      router.replace("/signin");
     }
   }, [router]);
 

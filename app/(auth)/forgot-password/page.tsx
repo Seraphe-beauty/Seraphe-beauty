@@ -18,9 +18,9 @@ export default function ForgotPasswordPage() {
     setSubmitting(true);
 
     try {
-      //   await api.auth.forgotPassword({ email });
+      await api.auth.adminForgotPasswordOtp({ email });
       toast.success("Reset code sent to your email.");
-      router.push(`/reset-password?email=${encodeURIComponent(email)}`);
+      router.push(`/forgot-password/reset?email=${encodeURIComponent(email)}`);
     } catch (err: any) {
       toast.error(err.message || "Failed to send reset code.");
     } finally {

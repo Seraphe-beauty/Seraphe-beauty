@@ -68,7 +68,7 @@ export const api = {
     adminForgotPasswordOtp: (
       data: AdminOtpPayload,
     ): Promise<AdminOtpResponse> =>
-      apiRequest<AdminOtpResponse>("/auth/admin/forgot-password/sent-otp", {
+      apiRequest<AdminOtpResponse>("/auth/admin/forgot-password/send-otp", {
         method: "POST",
         body: JSON.stringify(data),
       }),
