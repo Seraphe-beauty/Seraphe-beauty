@@ -27,7 +27,8 @@ export const Footer = () => {
     pathname === "/signup" ||
     pathname === "/reset-password" ||
     pathname === "/forgot-password" ||
-    pathname === "/signup-code";
+    pathname === "/signup-code" ||
+    pathname === "/forgot-password/reset";
 
   if (isAdminRoute) return null;
 

@@ -87,7 +87,7 @@ export default function SignupCodesPage() {
   return (
     <main className="mx-auto max-w-2xl p-6">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold">Signup Codes</h1>
+        <h1 className="text-2xl font-bold">Sign Up Codes</h1>
         <p className="mt-2 text-sm text-gray-500">
           Each code expires after 30 minutes.
         </p>

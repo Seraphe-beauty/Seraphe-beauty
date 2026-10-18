@@ -30,7 +30,7 @@ export const Nav = () => {
     pathname === "/signup" ||
     pathname === "/reset-password" ||
     pathname === "/forgot-password" ||
-    pathname === "/verify-otp";
+    pathname === "/forgot-password/reset";
 
   // Prevent scroll when mobile menu is open
   useEffect(() => {
