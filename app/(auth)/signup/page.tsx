@@ -7,6 +7,8 @@ import Image from "next/image";
 import logo from "@/components/images/short-logo.png";
 import { Eye, EyeOff } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { isPasswordValid } from "@/components/lib/validation/password";
+import PasswordRequirements from "@/components/common/passwordRequirements";
 
 interface SignUpProps {
   onAuthSuccess?: () => void;
@@ -25,6 +27,12 @@ export default function AdminSignUp({ onAuthSuccess }: SignUpProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+
+    // password validation
+    if (!isPasswordValid(password)) {
+      setError("Please meet all password requirements.");
+      return;
+    }
     setSubmitting(true);
 
     try {
@@ -121,6 +129,8 @@ export default function AdminSignUp({ onAuthSuccess }: SignUpProps) {
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
+
+                <PasswordRequirements password={password} />
               </div>
             </div>
           </div>

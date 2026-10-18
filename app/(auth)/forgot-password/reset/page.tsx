@@ -5,12 +5,14 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/components/lib/api";
 import { toast } from "sonner";
 import { Eye, EyeOff } from "lucide-react";
+import PasswordRequirements from "@/components/common/passwordRequirements";
+import { isPasswordValid } from "@/components/lib/validation/password";
 
 export default function ResetPasswordPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const email = searchParams.get("email") || "";
-
+  const [error, setError] = useState("");
   const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
   const [newPassword, setNewPassword] = useState("");
   const [oldPassword, setOldPassword] = useState("");
@@ -50,9 +52,15 @@ export default function ResetPasswordPage() {
 
   const handleReset = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
     const code = otp.join("");
     if (code.length < 6) {
       toast.error("Please enter the full 6-digit OTP code.");
+      return;
+    }
+    // password validation
+    if (!isPasswordValid(newPassword)) {
+      setError("Please meet all password requirements.");
       return;
     }
 
@@ -79,10 +87,17 @@ export default function ResetPasswordPage() {
         <h2 className="text-xl font-bold text-center text-gray-800 mb-1">
           Reset Password
         </h2>
+
         <p className="text-xs text-center text-gray-500 mb-6">
           Enter the code sent to{" "}
           <span className="font-semibold text-gray-700">{email}</span>
         </p>
+
+        {error && (
+          <div className="bg-red-50 text-red-600 text-sm p-3 rounded-md mb-4 font-medium">
+            {error}
+          </div>
+        )}
 
         <form onSubmit={handleReset} className="space-y-5">
           {/* OTP Input Boxes */}
@@ -153,6 +168,7 @@ export default function ResetPasswordPage() {
                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
             </div>
+            <PasswordRequirements password={newPassword} />
           </div>
 
           <button
