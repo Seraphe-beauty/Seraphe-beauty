@@ -15,8 +15,8 @@ export default function ResetPasswordPage() {
   const [error, setError] = useState("");
   const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
   const [newPassword, setNewPassword] = useState("");
-  const [oldPassword, setOldPassword] = useState("");
-  const [showOldPassword, setShowOldPassword] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
@@ -65,12 +65,17 @@ export default function ResetPasswordPage() {
       return;
     }
 
+    if (newPassword !== confirmPassword) {
+      setError("Passwords do not match!");
+      return;
+    }
+
     setSubmitting(true);
     try {
       await api.auth.adminForgotPasswordReset({
         otp: code,
         newPassword,
-        oldPassword,
+        confirmPassword,
         email,
       });
       toast.success("Password reset successfully. Please sign in.");
@@ -125,29 +130,6 @@ export default function ResetPasswordPage() {
             </div>
           </div>
 
-          {/* Old Password Input */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Enter Old Password
-            </label>
-            <div className="relative">
-              <input
-                type={showOldPassword ? "text" : "password"}
-                required
-                value={oldPassword}
-                onChange={(e) => setOldPassword(e.target.value)}
-                className="w-full px-4 py-2 pr-11 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-primaryText"
-              />
-              <button
-                type="button"
-                onClick={() => setShowOldPassword((prev) => !prev)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-              >
-                {showOldPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-              </button>
-            </div>
-          </div>
-
           {/* New Password Input */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -170,6 +152,29 @@ export default function ResetPasswordPage() {
               </button>
             </div>
             <PasswordRequirements password={newPassword} />
+          </div>
+
+          {/* Confirm Password Input */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Confirm your Password again
+            </label>
+            <div className="relative">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                required
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="w-full px-4 py-2 pr-11 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-primaryText"
+              />
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword((prev) => !prev)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+              >
+                {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
           </div>
 
           <button

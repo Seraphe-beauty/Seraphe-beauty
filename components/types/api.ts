@@ -317,7 +317,7 @@ export interface AdminSignUpResponse {
 export interface AdminResetPayload {
   email: string;
   otp: string;
-  oldPassword: string;
+  confirmPassword: string;
   newPassword: string;
 }
 
