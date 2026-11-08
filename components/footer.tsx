@@ -8,8 +8,7 @@ import { Check, X } from "lucide-react";
 import { BsInstagram } from "react-icons/bs";
 import { FaEnvelope, FaFacebook, FaPhone, FaTiktok } from "react-icons/fa";
 import { LiaLinkedin } from "react-icons/lia";
-
-import logo from "@/components/images/redbg.png";
+import logo from "@/components/images/newRedBg.png";
 import { footerList, skincareList } from "./lib/constants";
 import { api } from "./lib/api";
 
