@@ -8,7 +8,7 @@ import { Check, X } from "lucide-react";
 import { BsInstagram } from "react-icons/bs";
 import { FaEnvelope, FaFacebook, FaPhone, FaTiktok } from "react-icons/fa";
 import { LiaLinkedin } from "react-icons/lia";
-import logo from "@/components/images/newRedBg.png";
+import logo from "@/components/images/mainRedBg.png";
 import { footerList, skincareList } from "./lib/constants";
 import { api } from "./lib/api";
 
@@ -62,8 +62,8 @@ export const Footer = () => {
               <Image
                 src={logo}
                 alt="Seraphé Beauty Logo"
-                width={150}
-                height={60}
+                width={120}
+                height={50}
                 className="object-contain"
               />
             </Link>
