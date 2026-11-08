@@ -346,7 +346,7 @@ export const api = {
       id: string | number,
     ): Promise<{ success: boolean; message: string }> =>
       apiRequest<{ success: boolean; message: string }>(
-        `/admin/community-subscribers/${id}`,
+        `/admin/community/subscribers/${id}`,
         {
           method: "DELETE",
         },

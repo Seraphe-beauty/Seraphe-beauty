@@ -62,8 +62,8 @@ export const Footer = () => {
               <Image
                 src={logo}
                 alt="Seraphé Beauty Logo"
-                width={110}
-                height={40}
+                width={150}
+                height={60}
                 className="object-contain"
               />
             </Link>
