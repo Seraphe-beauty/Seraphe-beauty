@@ -62,7 +62,7 @@ const AdminNav = () => {
   const handleLogout = () => {
     logout();
     setDropdownOpen(false);
-    router.push("/signIn");
+    router.push("/signin");
   };
 
   // Generate 1-2 letter uppercase initials
